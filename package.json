@@ -1,0 +1,23 @@
+{
+  "name": "lucy-jack-final",
+  "version": "1.0.0",
+  "description": "Website for showcasing billionaire tax evasion statistics, made with express, javascript, html, css",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "browser-sync": "^3.0.2",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.3.0",
+    "globals": "^15.3.0",
+    "prettier": "^3.2.5"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
