@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/app.js"
+    "dev": "nodemon src/app.js",
+    "sync": "browser-sync start --proxy localhost:3000 --files=**/*  --ignore=node_modules --no-ui --no-inject-changes"
   },
   "author": "",
   "license": "ISC",
