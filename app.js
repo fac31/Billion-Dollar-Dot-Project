@@ -2,7 +2,6 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
-// import * as d3 from "d3";
 
 dotenv.config();
 
@@ -34,10 +33,3 @@ app.use((req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });
-
-// function test() {
-//   const adder = new d3.Adder();
-//   adder.add(42);
-//   console.log(adder.valueOf());
-// }
-// test();
