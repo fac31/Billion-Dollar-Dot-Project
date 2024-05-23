@@ -16,8 +16,8 @@
   /*--futura: "futura-pt, sans-serif";*/
   --jost: "Jost", sans-serif;
   --extra-bold: 800;
-  --small-fs: 1rem;
-  --large-fs: 10rem;
+  --small-fs: 1.5rem;
+  --large-fs: 15rem;
 }
 
 #start {
@@ -35,11 +35,11 @@ h1 {
 
 small {
   position: absolute;
-  top: 49.5%;
-  margin-left: -21px;
+  top: 48.9%;
+  margin-left: -31px;
   rotate: 270deg;
 
-  width: 150px;
+  width: 224px;
   text-align: center;
 
   color: var(--beige);
