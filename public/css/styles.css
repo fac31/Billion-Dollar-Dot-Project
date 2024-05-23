@@ -1,6 +1,65 @@
-h1 {
-  color: brown;
+* {
+  box-sizing: border-box;
 }
+
+:root {
+  /* COLOUR VARIABLES */
+  --beige: #f9efde;
+  --blue: #0e8bcd;
+  --green: #003d2b;
+  --pink: #cb026e;
+  --orange: #d86c01;
+  --purple: #8b3076;
+  --dark-blue: #01608a;
+
+  /* FONT VARIABLES */
+  /*--futura: "futura-pt, sans-serif";*/
+  --jost: "Jost", sans-serif;
+  --extra-bold: 800;
+  --small-fs: 1rem;
+  --large-fs: 10rem;
+}
+
+#start {
+  height: 100vh;
+}
+
+body {
+  background-color: var(--beige);
+}
+
+h1 {
+  color: var(--green);
+  font-size: var(--large-fs);
+}
+
+small {
+  position: absolute;
+  top: 49.5%;
+  margin-left: -21px;
+  rotate: 270deg;
+
+  width: 150px;
+  text-align: center;
+
+  color: var(--beige);
+  font-size: var(--small-fs);
+  background-color: var(--green);
+}
+
+h1,
+small {
+  font-family: var(--jost);
+  font-weight: var(--extra-bold);
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SCROLL ELEMENTS */
 
 #scrolly {
   position: relative;
