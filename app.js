@@ -12,14 +12,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 //  Serves static files from node_modules
-const staticModules = express.static(path.join(__dirname, "node_modules"));
+//const staticModules = express.static(path.join(__dirname, "node_modules"));
 
 //  Serves Static Files from public
 const staticHandler = express.static(path.join(__dirname, "public"));
-
-//  Middleware
-app.use("/node_modules", staticModules);
 app.use(staticHandler);
+//  Middleware
+//app.use("/node_modules", staticModules);
+
 app.use(express.json());
 
 app.get("/", (req, res) => {

@@ -2,7 +2,7 @@
   "name": "lucy-jack-final",
   "version": "1.0.0",
   "description": "Website for showcasing billionaire tax evasion statistics, made with express, javascript, html, css",
-  "main": "index.js",
+  "main": "app.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon app.js",
@@ -20,12 +20,7 @@
     "prettier": "^3.2.5"
   },
   "dependencies": {
-    "d3": "^7.9.0",
     "express": "^4.19.2",
-    "intersection-observer": "^0.12.2",
-    "scrollama": "^3.2.0"
-  },
-  "exports": {
-    "d3": "./node_modules/d3/dist/d3.min.js"
+    "intersection-observer": "^0.12.2"
   }
 }
