@@ -1,7 +1,7 @@
-export function fadeOut(element, delay) {
+export function fadeOut(element, delay, minOpacity) {
   let timer = setInterval(function () {
     var opacity = element.style.opacity;
-    if (opacity > 0) {
+    if (opacity > minOpacity) {
       opacity -= 0.01;
       element.style.opacity = opacity;
     } else {
@@ -10,12 +10,12 @@ export function fadeOut(element, delay) {
   }, delay);
 }
 
-export function fadeIn(element, delay) {
+export function fadeIn(element, delay, maxOpacity) {
   element.style.opacity = 0;
   let opacity = 0;
 
   let timer = setInterval(function () {
-    if (opacity < 1) {
+    if (opacity < maxOpacity) {
       opacity = opacity + 0.01;
       element.style.opacity = opacity;
     } else {

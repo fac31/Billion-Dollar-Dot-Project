@@ -6,6 +6,9 @@
   /* COLOUR VARIABLES */
   --beige: #f9efde;
   --blue: #0e8bcd;
+  --light-green: #5b8f77;
+  --yellow: #e1b52f;
+  --grey: #919191;
   --green: #003d2b;
   --pink: #cb026e;
   --orange: #d86c01;
@@ -44,7 +47,8 @@ h1 {
 
 small {
   position: absolute;
-  top: 48.9%;
+  top: 50%;
+  margin-top: -10px;
   margin-left: -31px;
 
   transform: rotate(270deg);
@@ -78,6 +82,44 @@ small {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+/* CIRCLE ELEMENTS */
+#circles > * {
+  position: absolute;
+  width: 185px;
+  height: 185px;
+  border-radius: 50%;
+  margin-left: 468px;
+  top: 50%;
+  margin-top: -85px;
+  opacity: 0;
+}
+#blue-c {
+  background-color: var(--blue);
+}
+#green-c {
+  background-color: var(--green);
+}
+#yellow-c {
+  background-color: var(--yellow);
+}
+#pink-c {
+  background-color: var(--pink);
+}
+#grey-c {
+  background-color: var(--grey);
+}
+#light-green-c {
+  background-color: var(--light-green);
+}
+#dark-blue-c {
+  background-color: var(--dark-blue);
+}
+#orange-c {
+  background-color: var(--orange);
+}
+#purple-c {
+  background-color: var(--purple);
 }
 
 /* SCROLL ELEMENTS */
