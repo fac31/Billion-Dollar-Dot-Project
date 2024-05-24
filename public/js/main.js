@@ -2,6 +2,8 @@
 // We are importing scrollama through a cdn in index.html
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
+import { intro } from "../js/intro.js";
+
 function test() {
   // Check d3 is working
   const adder = new d3.Adder();
@@ -33,3 +35,8 @@ function handleStepExit(res) {
   res.element.classList.remove("is-active");
 }
 test();
+
+function main() {
+  intro();
+}
+main();
