@@ -2,6 +2,8 @@
 // We are importing scrollama through a cdn in index.html
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
+import { fadeIn } from "./fade.js";
+
 function test() {
   // Check d3 is working
   const adder = new d3.Adder();
@@ -33,3 +35,9 @@ function handleStepExit(res) {
   res.element.classList.remove("is-active");
 }
 test();
+
+function main() {
+  const arrowElement = document.getElementById("fade-elements");
+  fadeIn(arrowElement, 10);
+}
+main();
