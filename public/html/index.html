@@ -8,7 +8,9 @@
   <link rel="icon" type="image/x-icon" href="../assets/dollar-icon.svg" />
   <link rel="stylesheet" href="..\css\styles.css" />
   <script src="../js/main.js" type="module" defer></script>
+  <script src="../js/intro.js" type="module" defer></script>
   <!-- Scrollama Import -->
+  <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
   <script src="https://unpkg.com/scrollama"></script>
   <!-- Font Links -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +22,7 @@
 <body>
   <div class="center" id="start">
     <h1><small>WHERE TO FIND</small>$200 BILLION</h1>
-    <div id="circles">
+    <div id="circles-intro" class="circles">
       <div id="blue-c"></div>
       <div id="green-c"></div>
       <div id="yellow-c"></div>
@@ -39,8 +41,8 @@
 
 
   <section class="scrolly" id="scrolly-one">
-    <article>
-      <div class="step" data-step="1">
+    <article id="scroll-one-art">
+      <div class="step center flex-column" data-step="1">
         <p>
           Most would like to be a little wealthier. Some want to be the wealthiest.
         </p>
@@ -50,27 +52,38 @@
         <p>
           They each have a private wealth of at least 1,000,000,000: 9 zeros.
         </p>
+        <div id="circles-1" class="circles">
+          <div id="blue-c"></div>
+          <div id="green-c"></div>
+          <div id="yellow-c"></div>
+          <div id="pink-c"></div>
+          <div id="grey-c"></div>
+          <div id="light-green-c"></div>
+          <div id="dark-blue-c"></div>
+          <div id="orange-c"></div>
+          <div id="purple-c"></div>
+        </div>
         <p>
           This minute portion of the population has captured an outsized amount of total global wealth.
         </p>
       </div>
-      <div class="step" data-step="2">
+      <div class="step center flex-column" data-step="2">
         <p>
           Here's what that looks like. This represents who owns all of the World's wealth.
         </p>
       </div>
-      <div class="step" data-step="3">
+      <div class="step center flex-column" data-step="3">
         <p>
           The poorest half of the World contains approximately 4 billion people. Together they share 2% of all the
           wealth in the World.
         </p>
       </div>
-      <div class="step" data-step="4">
+      <div class="step center flex-column" data-step="4">
         <p>
           Less than 3000 Billionaires own three times that.
         </p>
       </div>
-      <div class="step" data-step="5">
+      <div class="step center flex-column" data-step="5">
         <p>
           The gap between the poorest and the richest has been growing bigger
         </p>
@@ -81,7 +94,7 @@
           for the last four decades.
         </p>
       </div>
-      <div class="step" data-step="6">
+      <div class="step center flex-column" data-step="6">
         <p>
           In the 1980s, Thatcher and Reagan championed a radical new idea:
         </p>
@@ -100,7 +113,7 @@
           in the hands of the few.
         </p>
       </div>
-      <div class="step" data-step="7">
+      <div class="step center flex-column" data-step="7">
         <p>
           In richer countries, the totality of wealth is now in private hands.
         </p>
@@ -108,35 +121,39 @@
           Public Wealth has dropped from 102% of national income in 1980 to -106% in 2020.
         </p>
       </div>
-      <div class="step" data-step="8">
+      <div class="step center flex-column" data-step="8">
         <p> In the same time period, private wealth has 264% of national income to 682%.
         </p>
       </div>
-      <div class="step" data-step="9">
+      <div class="step center flex-column" data-step="9">
         <p> One of the fundamental mechanisms for addressing this ever-widening gap between rich and poor is the
           progressive tax system, where individuals contribute in accordance with their earnings.
         </p>
         <p> For a long time, the amount Billionaires pay in taxes have been shrouded in mystery. Until now. Recent
-          studies have gathered just enough data to start painting a clearer picture. The findings reveal a stark truth:
+          studies have gathered just enough data to start painting a clearer picture. The findings reveal a stark
+          truth:
         </p>
         <p> Billionaires are paying significantly less tax than anyone else.
         </p>
       </div>
-      <div class="step" data-step="10">
+      <div class="step center flex-column" data-step="10">
         <p> This represents how much each income group pays in taxes.
         </p>
       </div>
-      <div class="step" data-step="11">
+      <div class="step center flex-column" data-step="11">
         <p> This group are the majority: The bottom 90% of earners. When you average out across the three countries
           studied, they&rsquo;re all paying around the same percentage, 36%.
         </p>
       </div>
-      <div class="step" data-step="12">
-        <p> This group are the Billionaires. This time they&rsquo;re the smallest dot: Because they&rsquo;re paying the
+      <div class="step center flex-column" data-step="12">
+        <p> This group are the Billionaires. This time they&rsquo;re the smallest dot: Because they&rsquo;re paying
+          the
           least tax. As a percentage of income, it works out to be about 25%. But that figure is hiding a crucial
-          detail: Billionaires tend to keep their tax-vulnerable incomes low. Instead, the majority of their wealth sits
+          detail: Billionaires tend to keep their tax-vulnerable incomes low. Instead, the majority of their wealth
+          sits
           in things like dividends or assets and they borrow against those assets. Take Elon Musk for example, who
-          earned no salary in 2023 and borrowed the $13 billion to buy Twitter from interest free loans off the back of
+          earned no salary in 2023 and borrowed the $13 billion to buy Twitter from interest free loans off the back
+          of
           his wealth portfolio.
         </p>
         <p> If you take their tax rate as a percentage of their wealth, it&rsquo;s close to 0%.
@@ -149,19 +166,22 @@
   <section>
     <article>
       <p>
-        In the dance of wealth and taxation, the savvy wealthy individual has long mastered the art of sidestepping high
+        In the dance of wealth and taxation, the savvy wealthy individual has long mastered the art of sidestepping
+        high
         tax rates, often without straying into the realm of outright evasion.
       </p>
       <p>
         Since the 80s, countries have competed to attract Billionaires and multinational companies by effectively
         facilitating this tax dodge: As a result, the average corporation income tax rate fell by half in the space of
-        three decades. The rich have grown exponentially richer, faster than anyone else, leading us to crash land where
+        three decades. The rich have grown exponentially richer, faster than anyone else, leading us to crash land
+        where
         we are now: a Topsy Turvy World where the wealthiest pay the lowest effective tax rate.
       </p>
       <p>
         The EU Tax Observatory, a Research Institute run out of the Paris School of Economics, argue that this reality
         is not inevitable. They propose a bold solution: The total global tax paid by a billionaire should not fall
-        below 2% of their wealth. Put simply: If Bloombery or Forbes can figure out how much someone is worth, so should
+        below 2% of their wealth. Put simply: If Bloombery or Forbes can figure out how much someone is worth, so
+        should
         the taxman.
       </p>
       <p>
@@ -185,7 +205,8 @@
     <article>
       <div class="step" data-step="13">
         <p> Let&rsquo;s get back to this dot. Many in the Billionaires Club have vastly more than just a billion
-          dollars. It&rsquo;s pretty hard to imagine how much money that is, so let&rsquo;s make this dot represent one
+          dollars. It&rsquo;s pretty hard to imagine how much money that is, so let&rsquo;s make this dot represent
+          one
           billion dollars.
         </p>
       </div>

@@ -1,10 +1,12 @@
 import { fadeIn } from "./fade.js";
+const circles = document.getElementById("circles-intro");
+let circleMargin = -85;
 
 export function intro() {
   const arrowElement = document.getElementById("fade-elements");
-  const circles = document.getElementById("circles");
+
   setTimeout(() => fadeIn(arrowElement, 10, 1), 4000);
-  let circleMargin = -85;
+
   let maxMargin = -85;
   for (const circle of circles.children) {
     setTimeout(() => fadeIn(circle, 20, 0.5), 2000);
