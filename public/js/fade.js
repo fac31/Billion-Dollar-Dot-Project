@@ -1,7 +1,7 @@
-export function fadeOut(element, delay, minOpacity) {
+export function fadeOut(element, delay) {
   let timer = setInterval(function () {
     var opacity = element.style.opacity;
-    if (opacity > minOpacity) {
+    if (opacity > 0) {
       opacity -= 0.01;
       element.style.opacity = opacity;
     } else {

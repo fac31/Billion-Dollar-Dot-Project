@@ -3,6 +3,7 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 import { intro } from "../js/intro.js";
+import { enterStepOne, exitStepOne } from "./stepOne.js";
 
 function test() {
   // Check d3 is working
@@ -16,9 +17,7 @@ function test() {
   // setup the instance, pass callback functions
   scroller
     .setup({
-      step: "#scrolly .step", // required
-      //container: ".scroll", // required (for sticky)
-      //graphic: ".scroll__graphic", // required (for sticky)
+      step: "#scrolly-one .step", // required
       offset: 0.5, // optional, default = 0.5
       debug: false, // optional, default = false
     })
@@ -29,10 +28,18 @@ function test() {
 }
 
 function handleStepEnter(res) {
-  res.element.classList.add("is-active");
+  switch (res.index) {
+    case 0:
+      enterStepOne();
+      break;
+  }
 }
 function handleStepExit(res) {
-  res.element.classList.remove("is-active");
+  switch (res.index) {
+    case 0:
+      exitStepOne();
+      break;
+  }
 }
 test();
 

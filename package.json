@@ -20,7 +20,6 @@
     "prettier": "^3.2.5"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "intersection-observer": "^0.12.2"
+    "express": "^4.19.2"
   }
 }
