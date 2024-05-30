@@ -1,17 +1,17 @@
 /* eslint-disable no-undef */
 // We are importing scrollama through a cdn in index.html
-import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 import { intro } from "../js/intro.js";
-import { enterStepOne, exitStepOne } from "./stepOne.js";
+import {
+  enterStepOne,
+  enterStepThree,
+  enterStepTwo,
+  exitStepOne,
+  exitStepTwo,
+} from "./stepOne.js";
 
-function test() {
-  // Check d3 is working
-  const adder = new d3.Adder();
-  adder.add(4);
-  console.log(adder.valueOf());
-
-  // Check scrollama is working
+function main() {
+  intro();
   const scroller = scrollama();
 
   // setup the instance, pass callback functions
@@ -32,6 +32,12 @@ function handleStepEnter(res) {
     case 0:
       enterStepOne();
       break;
+    case 1:
+      enterStepTwo();
+      break;
+    case 2:
+      enterStepThree();
+      break;
   }
 }
 function handleStepExit(res) {
@@ -39,11 +45,10 @@ function handleStepExit(res) {
     case 0:
       exitStepOne();
       break;
+    case 1:
+      exitStepTwo();
+      break;
   }
 }
-test();
 
-function main() {
-  intro();
-}
 main();
