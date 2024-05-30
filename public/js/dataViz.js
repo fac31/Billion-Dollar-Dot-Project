@@ -88,7 +88,7 @@ export function startDataViz() {
 export function changeSize() {
   circles
     .transition()
-    .duration(1000)
+    .duration(3000)
     .attr("cy", (d) => startHeight - radiusScale(d))
     .attr("r", (d) => radiusScale(d))
     .on("end", function (d, i) {
@@ -131,7 +131,7 @@ export function hideDataPoints() {
     if (i !== 0) {
       d3.select(this)
         .transition()
-        .duration(500)
+        .duration(3000)
         .attr("opacity", 0)
         .attr("r", 0);
     }
