@@ -94,16 +94,22 @@ small {
 .flex-column {
   flex-direction: column;
 }
+
+#dataviz_one {
+  width: 100%;
+  /* height: 600px; */
+  height: 300px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* CIRCLE ELEMENTS */
 #circles-intro > * {
   position: absolute;
   margin-left: 468px;
   top: 50%;
   margin-top: -85px;
-}
-#circles-1 {
-  display: flex;
-  flex-direction: row;
 }
 .circles > * {
   width: 185px;
