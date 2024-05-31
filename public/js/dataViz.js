@@ -145,17 +145,57 @@ export function hideDataPoints() {
 }
 
 function hideLines() {
-  svg.selectAll(".data-line").each(function (_, i) {
-    if (i !== 0) {
-      d3.select(this).transition().duration(500).attr("opacity", 0);
-    }
+  svg.selectAll(".data-line").each(function () {
+    d3.select(this).transition().duration(500).attr("opacity", 0);
   });
 }
 
 function hideText() {
-  svg.selectAll(".data-text").each(function (_, i) {
-    if (i !== 0) {
-      d3.select(this).transition().duration(500).attr("opacity", 0);
+  svg.selectAll(".data-text").each(function () {
+    d3.select(this).transition().duration(500).attr("opacity", 0);
+  });
+}
+
+export function moveBlueCircle() {
+  const x = d3
+    .scalePoint()
+    .domain(d3.range(data.length))
+    .range([width / 2 - initialRadius, width])
+    .padding(0.5);
+  circles.each(function (_, i) {
+    if (i == 0) {
+      d3.select(this)
+        .transition()
+        .duration(3000)
+        .delay((d, i) => i * 750)
+        // Transition to final positions based on data
+        .attr("cx", (_, i) => x(i));
+    }
+  });
+  svg.selectAll(".data-line").each(function (_, i) {
+    if (i == 0) {
+      const cx = x(i);
+      const colour = colours[i];
+      d3.select(this.parentNode)
+        .append("line")
+        .attr("x1", cx)
+        .attr("y1", startHeight)
+        .attr("x2", cx)
+        .attr("y2", startHeight + lineLength)
+        .attr("stroke", colours[i])
+        .attr("stroke-opacity", 0.5)
+        .attr("stroke-width", 1)
+        .attr("class", "data-line");
+
+      d3.select(this.parentNode)
+        .append("text")
+        .attr("x", cx)
+        .attr("y", startHeight + lineLength + 15)
+        .attr("fill", colour)
+        .attr("fill-opacity", 0.5)
+        .attr("text-anchor", "middle")
+        .text(labels[i])
+        .attr("class", "data-text");
     }
   });
 }
