@@ -7,8 +7,10 @@ import {
   enterStepThree,
   enterStepTwo,
   exitStepOne,
-  exitStepTwo,
-} from "./stepOne.js";
+  revertToStepOne,
+  revertToStepTwo,
+  revertToStepThree,
+} from "./steps.js";
 
 function main() {
   intro();
@@ -30,13 +32,25 @@ function main() {
 function handleStepEnter(res) {
   switch (res.index) {
     case 0:
-      enterStepOne();
+      if (res.direction == "up") {
+        revertToStepOne();
+      } else {
+        enterStepOne();
+      }
       break;
     case 1:
-      enterStepTwo();
+      if (res.direction == "up") {
+        revertToStepTwo();
+      } else {
+        enterStepTwo();
+      }
       break;
     case 2:
-      enterStepThree();
+      if (res.direction == "up") {
+        revertToStepThree();
+      } else {
+        enterStepThree();
+      }
       break;
   }
 }
@@ -44,9 +58,6 @@ function handleStepExit(res) {
   switch (res.index) {
     case 0:
       exitStepOne();
-      break;
-    case 1:
-      exitStepTwo();
       break;
   }
 }

@@ -46,20 +46,20 @@ const svg = d3
   .attr("height", height + lineLength);
 
 // Positions circles evenly across the page. Padding would bring them closer together
-const x = d3
+let x = d3
   .scalePoint()
   .domain(d3.range(data.length))
   .range([0, width])
   .padding(0.5);
 
 // setting up the
-const radiusScale = d3
+let radiusScale = d3
   .scaleSqrt()
   .domain([0, d3.max(data)])
   .range([0, 50]);
 
 // Binds the data to circles then sets where they start and move to, and then what they look like
-const circles = svg
+let circles = svg
   .selectAll("circle")
   .data(data)
   .join("circle")
@@ -76,7 +76,13 @@ const circles = svg
 //     }
 //   });
 
+//  STEP ONE FUNCTIONS
 export function startDataViz() {
+  // Reset positions of circles
+  circles
+    .attr("cx", width - initialRadius) // Initial position to the right
+    .attr("cy", startHeight - initialRadius) // Initial top alignment
+    .attr("r", initialRadius); // Initial radius
   circles
     .transition()
     .duration(3000)
@@ -84,11 +90,29 @@ export function startDataViz() {
     // Transition to final positions based on data
     .attr("cx", (_, i) => x(i));
 }
+export function restartDataViz() {
+  console.log("revert to step one");
+  hideLines();
+  hideText();
+  // setting up the
+  radiusScale = d3
+    .scaleSqrt()
+    .domain([0, d3.max(data)])
+    .range([0, 50]);
+  circles
+    .transition()
+    .duration(3000)
+    .attr("cy", startHeight - initialRadius)
+    .attr("r", initialRadius);
+}
+
+//  STEP TWO FUNCTIONS
 
 export function changeSize() {
   circles
     .transition()
     .duration(3000)
+    .attr("cx", (_, i) => x(i))
     .attr("cy", (d) => startHeight - radiusScale(d))
     .attr("r", (d) => radiusScale(d))
     .on("end", function (d, i) {
@@ -115,16 +139,60 @@ export function changeSize() {
         .attr("text-anchor", "middle")
         .text(labels[i])
         .attr("class", "data-text");
-
-      // After text appears, wait 2 seconds, then hide all except the first data point
-      //   if (i === data.length - 1) {
-      //     setTimeout(() => {
-      //       hideDataPoints();
-      //     }, 2000);
-      //   }
     });
 }
+export function revertChangeSize() {
+  console.log("revert to step two");
+  hideLines();
+  hideText();
+  // setting up the
+  radiusScale = d3
+    .scaleSqrt()
+    .domain([0, d3.max(data)])
+    .range([0, 50]);
 
+  circles
+    .transition()
+    .duration(1000)
+    .delay((d, i) => i * 750)
+    .attr("cx", (_, i) => x(i))
+    .attr("cy", (d) => startHeight - radiusScale(d))
+    .attr("r", (d) => radiusScale(d));
+  circles.each(function (d, i) {
+    if (i !== 0) {
+      d3.select(this)
+        .transition()
+        .duration(3000)
+        .attr("opacity", 0.5)
+        .attr("r", (d) => radiusScale(d));
+    }
+    // After resizing, add lines under the circles
+    const cx = x(i);
+    const colour = colours[i];
+    d3.select(this.parentNode)
+      .append("line")
+      .attr("x1", cx)
+      .attr("y1", startHeight)
+      .attr("x2", cx)
+      .attr("y2", startHeight + lineLength)
+      .attr("stroke", colours[i])
+      .attr("stroke-opacity", 0.5)
+      .attr("stroke-width", 1)
+      .attr("class", "data-line");
+
+    d3.select(this.parentNode)
+      .append("text")
+      .attr("x", cx)
+      .attr("y", startHeight + lineLength + 15)
+      .attr("fill", colour)
+      .attr("fill-opacity", 0.5)
+      .attr("text-anchor", "middle")
+      .text(labels[i])
+      .attr("class", "data-text");
+  });
+}
+
+//  STEP THREE FUNCTIONS
 export function hideDataPoints() {
   // Hide all circles except the one at index 0
   circles.each(function (d, i) {
@@ -157,7 +225,7 @@ function hideText() {
 }
 
 export function moveBlueCircle() {
-  const x = d3
+  x = d3
     .scalePoint()
     .domain(d3.range(data.length))
     .range([width / 2 - initialRadius, width])
@@ -169,7 +237,9 @@ export function moveBlueCircle() {
         .duration(3000)
         .delay((d, i) => i * 750)
         // Transition to final positions based on data
-        .attr("cx", (_, i) => x(i));
+        .attr("cx", (_, i) => x(i))
+        .attr("cy", (d) => startHeight - radiusScale(d))
+        .attr("r", (d) => radiusScale(d));
     }
   });
   svg.selectAll(".data-line").each(function (_, i) {
@@ -199,3 +269,6 @@ export function moveBlueCircle() {
     }
   });
 }
+
+export function revertMoveBlueCircle() {}
+export function revertHideDataPoints() {}

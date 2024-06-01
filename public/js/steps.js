@@ -3,6 +3,10 @@ import {
   changeSize,
   hideDataPoints,
   moveBlueCircle,
+  restartDataViz,
+  revertChangeSize,
+  revertHideDataPoints,
+  revertMoveBlueCircle,
   startDataViz,
 } from "./dataViz.js";
 const introCircles = document.getElementById("circles-intro");
@@ -21,6 +25,10 @@ export function enterStepOne() {
   step1Viz.append(dataViz1);
   startDataViz();
 }
+export function revertToStepOne() {
+  step1Viz.append(dataViz1);
+  restartDataViz();
+}
 
 export function exitStepOne() {
   for (const circle of introCircles.children) {
@@ -36,12 +44,20 @@ export function enterStepTwo() {
   fadeInSVG(dataViz1.firstChild, 10, 1);
   changeSize();
 }
-export function exitStepTwo() {}
-
+export function revertToStepTwo() {
+  step2.append(dataViz1);
+  fadeIn(dataViz1, 10, 1);
+  revertChangeSize();
+}
 export function enterStepThree() {
   dataViz1.firstChild.setAttribute("opacity", "0");
   step3.append(dataViz1);
   fadeInSVG(dataViz1.firstChild, 10, 1);
   hideDataPoints();
   moveBlueCircle();
+}
+export function revertToStepThree() {
+  step3.append(dataViz1);
+  revertMoveBlueCircle();
+  revertHideDataPoints();
 }
