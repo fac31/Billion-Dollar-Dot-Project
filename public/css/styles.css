@@ -160,10 +160,15 @@ article {
   height: 100vh;
   width: 100%;
   margin-top: 200px;
-  border: 1px solid black;
 }
 #step1Viz {
   height: 300px;
+}
+#main-article {
+  width: 70%;
+  margin: auto;
+  margin-top: 200px;
+  font-size: var(--small-fs);
 }
 
 .step p {
