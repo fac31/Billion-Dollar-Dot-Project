@@ -103,7 +103,8 @@ export function restartDataViz() {
     .transition()
     .duration(3000)
     .attr("cy", startHeight - initialRadius)
-    .attr("r", initialRadius);
+    .attr("r", initialRadius)
+    .attr("cx", (_, i) => x(i));
 }
 
 //  STEP TWO FUNCTIONS
@@ -143,6 +144,11 @@ export function changeSize() {
 }
 export function revertChangeSize() {
   console.log("revert to step two");
+  x = d3
+    .scalePoint()
+    .domain(d3.range(data.length))
+    .range([0, width])
+    .padding(0.5);
   hideLines();
   hideText();
   // setting up the
@@ -151,21 +157,27 @@ export function revertChangeSize() {
     .domain([0, d3.max(data)])
     .range([0, 50]);
 
-  circles
-    .transition()
-    .duration(1000)
-    .delay((d, i) => i * 750)
-    .attr("cx", (_, i) => x(i))
-    .attr("cy", (d) => startHeight - radiusScale(d))
-    .attr("r", (d) => radiusScale(d));
+  circles.transition().duration(1000);
+  //.delay((d, i) => i * 750)
+
+  // .attr("cy", (d) => startHeight - radiusScale(d))
+  // .attr("r", (d) => radiusScale(d));
+  x = d3
+    .scalePoint()
+    .domain(d3.range(data.length))
+    .range([0, width])
+    .padding(0.5);
   circles.each(function (d, i) {
-    if (i !== 0) {
-      d3.select(this)
-        .transition()
-        .duration(3000)
-        .attr("opacity", 0.5)
-        .attr("r", (d) => radiusScale(d));
-    }
+    console.log(x(i));
+    // if (i !== 0) {
+    d3.select(this)
+      .transition()
+      .duration(3000)
+      .attr("opacity", 0.5)
+      .attr("cx", x(i))
+      .attr("cy", (d) => startHeight - radiusScale(d))
+      .attr("r", (d) => radiusScale(d));
+    // }
     // After resizing, add lines under the circles
     const cx = x(i);
     const colour = colours[i];
