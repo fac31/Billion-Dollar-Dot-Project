@@ -6,10 +6,14 @@ import {
   enterStepOne,
   enterStepThree,
   enterStepTwo,
+  enterStepFour,
   exitStepOne,
   revertToStepOne,
   revertToStepTwo,
 } from "./steps.js";
+
+import { startDataViz2 } from "./dataViz2.js";
+import { startDataViz3 } from "./dataViz3.js";
 
 function main() {
   intro();
@@ -45,9 +49,16 @@ function handleStepEnter(res) {
       }
       break;
     case 2:
-      if (res.direction == "down") {
-        enterStepThree();
-      }
+      enterStepThree();
+      break;
+    case 3:
+      enterStepFour();
+      break;
+    case 4:
+      startDataViz2();
+      break;
+    case 5:
+      startDataViz3();
       break;
   }
 }

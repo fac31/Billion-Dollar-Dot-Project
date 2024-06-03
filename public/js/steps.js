@@ -12,6 +12,7 @@ const dataViz1 = document.getElementById("dataviz_one");
 const step1Viz = document.getElementById("step1Viz");
 const step2 = document.getElementById("step2");
 const step3 = document.getElementById("step3");
+const step4 = document.getElementById("step4");
 
 export function enterStepOne() {
   for (const circle of introCircles.children) {
@@ -46,6 +47,9 @@ export function enterStepThree() {
   transitionToStep(step3);
   hideDataPoints();
   moveBlueCircle();
+}
+export function enterStepFour() {
+  transitionToStep(step4);
 }
 
 function transitionToStep(step) {

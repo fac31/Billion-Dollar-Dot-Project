@@ -95,7 +95,9 @@ small {
   flex-direction: column;
 }
 
-#dataviz_one {
+#dataviz_one,
+#dataviz_two,
+#dataviz_three {
   width: 100%;
   /* height: 600px; */
   height: 300px;
