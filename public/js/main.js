@@ -9,7 +9,6 @@ import {
   exitStepOne,
   revertToStepOne,
   revertToStepTwo,
-  revertToStepThree,
 } from "./steps.js";
 
 function main() {
@@ -46,9 +45,7 @@ function handleStepEnter(res) {
       }
       break;
     case 2:
-      if (res.direction == "up") {
-        revertToStepThree();
-      } else {
+      if (res.direction == "down") {
         enterStepThree();
       }
       break;

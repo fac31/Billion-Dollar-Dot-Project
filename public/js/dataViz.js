@@ -32,7 +32,6 @@ const labels = [
 
 // Setting the width, height and radius of the svg, circles and lines
 const width = window.innerWidth;
-//const height = 500;
 const height = 200;
 const initialRadius = 95;
 const lineLength = 50;
@@ -46,20 +45,20 @@ const svg = d3
   .attr("height", height + lineLength);
 
 // Positions circles evenly across the page. Padding would bring them closer together
-let x = d3
+const x = d3
   .scalePoint()
   .domain(d3.range(data.length))
   .range([0, width])
   .padding(0.5);
 
 // setting up the
-let radiusScale = d3
+const radiusScale = d3
   .scaleSqrt()
   .domain([0, d3.max(data)])
   .range([0, 50]);
 
 // Binds the data to circles then sets where they start and move to, and then what they look like
-let circles = svg
+const circles = svg
   .selectAll("circle")
   .data(data)
   .join("circle")
@@ -69,21 +68,13 @@ let circles = svg
   .attr("fill", (_, i) => colours[i]) // Apply colors
   .attr("opacity", 0.5); // Set opacity to 50%
 
-//   .on("end", function (d, i) {
-// //    Check if all transitions are done
-//     if (i === data.length - 1) {
-//       changeSize();
-//     }
-//   });
-
 //  STEP ONE FUNCTIONS
 export function startDataViz() {
-  // Reset positions of circles
   circles
+    // Reset positions of circles
     .attr("cx", width - initialRadius) // Initial position to the right
     .attr("cy", startHeight - initialRadius) // Initial top alignment
-    .attr("r", initialRadius); // Initial radius
-  circles
+    .attr("r", initialRadius) // Initial radius
     .transition()
     .duration(3000)
     .delay((d, i) => i * 750)
@@ -91,14 +82,8 @@ export function startDataViz() {
     .attr("cx", (_, i) => x(i));
 }
 export function restartDataViz() {
-  console.log("revert to step one");
   hideLines();
   hideText();
-  // setting up the
-  radiusScale = d3
-    .scaleSqrt()
-    .domain([0, d3.max(data)])
-    .range([0, 50]);
   circles
     .transition()
     .duration(3000)
@@ -115,61 +100,15 @@ export function changeSize() {
     .duration(3000)
     .attr("cx", (_, i) => x(i))
     .attr("cy", (d) => startHeight - radiusScale(d))
-    .attr("r", (d) => radiusScale(d))
-    .on("end", function (d, i) {
-      // After resizing, add lines under the circles
-      const cx = x(i);
-      const colour = colours[i];
-      d3.select(this.parentNode)
-        .append("line")
-        .attr("x1", cx)
-        .attr("y1", startHeight)
-        .attr("x2", cx)
-        .attr("y2", startHeight + lineLength)
-        .attr("stroke", colours[i])
-        .attr("stroke-opacity", 0.5)
-        .attr("stroke-width", 1)
-        .attr("class", "data-line");
-
-      d3.select(this.parentNode)
-        .append("text")
-        .attr("x", cx)
-        .attr("y", startHeight + lineLength + 15)
-        .attr("fill", colour)
-        .attr("fill-opacity", 0.5)
-        .attr("text-anchor", "middle")
-        .text(labels[i])
-        .attr("class", "data-text");
-    });
+    .attr("r", (d) => radiusScale(d));
+  showLines();
+  showText();
 }
 export function revertChangeSize() {
-  console.log("revert to step two");
-  x = d3
-    .scalePoint()
-    .domain(d3.range(data.length))
-    .range([0, width])
-    .padding(0.5);
+  x.range([0, width]);
   hideLines();
   hideText();
-  // setting up the
-  radiusScale = d3
-    .scaleSqrt()
-    .domain([0, d3.max(data)])
-    .range([0, 50]);
-
-  circles.transition().duration(1000);
-  //.delay((d, i) => i * 750)
-
-  // .attr("cy", (d) => startHeight - radiusScale(d))
-  // .attr("r", (d) => radiusScale(d));
-  x = d3
-    .scalePoint()
-    .domain(d3.range(data.length))
-    .range([0, width])
-    .padding(0.5);
   circles.each(function (d, i) {
-    console.log(x(i));
-    // if (i !== 0) {
     d3.select(this)
       .transition()
       .duration(3000)
@@ -177,31 +116,9 @@ export function revertChangeSize() {
       .attr("cx", x(i))
       .attr("cy", (d) => startHeight - radiusScale(d))
       .attr("r", (d) => radiusScale(d));
-    // }
-    // After resizing, add lines under the circles
-    const cx = x(i);
-    const colour = colours[i];
-    d3.select(this.parentNode)
-      .append("line")
-      .attr("x1", cx)
-      .attr("y1", startHeight)
-      .attr("x2", cx)
-      .attr("y2", startHeight + lineLength)
-      .attr("stroke", colours[i])
-      .attr("stroke-opacity", 0.5)
-      .attr("stroke-width", 1)
-      .attr("class", "data-line");
-
-    d3.select(this.parentNode)
-      .append("text")
-      .attr("x", cx)
-      .attr("y", startHeight + lineLength + 15)
-      .attr("fill", colour)
-      .attr("fill-opacity", 0.5)
-      .attr("text-anchor", "middle")
-      .text(labels[i])
-      .attr("class", "data-text");
   });
+  showLines();
+  showText();
 }
 
 //  STEP THREE FUNCTIONS
@@ -217,70 +134,85 @@ export function hideDataPoints() {
     }
   });
 
-  // Hide all lines except the one associated with the circle at index 0
   hideLines();
-
-  // Hide all text except the one associated with the circle at index 0
   hideText();
+}
+export function moveBlueCircle() {
+  //  Updates width so blue circle is in the middle of the page
+  x.range([width / 2 - initialRadius, width]);
+
+  //  Moves blue circle and makes it correct radius
+  circles
+    .filter((_, i) => i === 0)
+    .transition()
+    .duration(3000)
+    .delay((_, i) => i * 750)
+    .attr("cx", (_, i) => x(i))
+    .attr("cy", (d) => startHeight - radiusScale(d))
+    .attr("r", (d) => radiusScale(d));
+
+  //  Add blue circle line and text
+  const cx = x(0);
+  const colour = colours[0];
+  svg
+    .append("line")
+    .attr("x1", cx)
+    .attr("y1", startHeight)
+    .attr("x2", cx)
+    .attr("y2", startHeight + lineLength)
+    .attr("stroke", colour)
+    .attr("stroke-opacity", 0.5)
+    .attr("stroke-width", 1)
+    .attr("class", "data-line");
+  svg
+    .append("text")
+    .attr("x", cx)
+    .attr("y", startHeight + lineLength + 15)
+    .attr("fill", colour)
+    .attr("fill-opacity", 0.5)
+    .attr("text-anchor", "middle")
+    .text(labels[1])
+    .attr("class", "data-text");
 }
 
 function hideLines() {
-  svg.selectAll(".data-line").each(function () {
-    d3.select(this).transition().duration(500).attr("opacity", 0);
-  });
+  svg.selectAll(".data-line").transition().duration(500).attr("opacity", 0);
 }
 
 function hideText() {
-  svg.selectAll(".data-text").each(function () {
-    d3.select(this).transition().duration(500).attr("opacity", 0);
+  svg.selectAll(".data-text").transition().duration(500).attr("opacity", 0);
+}
+
+function showLines() {
+  circles.each(function (d, i) {
+    // After resizing, add lines under the circles
+    const cx = x(i);
+    d3.select(this.parentNode)
+      .append("line")
+      .attr("x1", cx)
+      .attr("y1", startHeight)
+      .attr("x2", cx)
+      .attr("y2", startHeight + lineLength)
+      .attr("stroke", colours[i])
+      .attr("stroke-opacity", 0.5)
+      .attr("stroke-width", 1)
+      .attr("class", "data-line");
   });
 }
 
-export function moveBlueCircle() {
-  x = d3
-    .scalePoint()
-    .domain(d3.range(data.length))
-    .range([width / 2 - initialRadius, width])
-    .padding(0.5);
-  circles.each(function (_, i) {
-    if (i == 0) {
-      d3.select(this)
-        .transition()
-        .duration(3000)
-        .delay((d, i) => i * 750)
-        // Transition to final positions based on data
-        .attr("cx", (_, i) => x(i))
-        .attr("cy", (d) => startHeight - radiusScale(d))
-        .attr("r", (d) => radiusScale(d));
-    }
-  });
-  svg.selectAll(".data-line").each(function (_, i) {
-    if (i == 0) {
-      const cx = x(i);
-      const colour = colours[i];
-      d3.select(this.parentNode)
-        .append("line")
-        .attr("x1", cx)
-        .attr("y1", startHeight)
-        .attr("x2", cx)
-        .attr("y2", startHeight + lineLength)
-        .attr("stroke", colours[i])
-        .attr("stroke-opacity", 0.5)
-        .attr("stroke-width", 1)
-        .attr("class", "data-line");
-
-      d3.select(this.parentNode)
-        .append("text")
-        .attr("x", cx)
-        .attr("y", startHeight + lineLength + 15)
-        .attr("fill", colour)
-        .attr("fill-opacity", 0.5)
-        .attr("text-anchor", "middle")
-        .text(labels[i])
-        .attr("class", "data-text");
-    }
+function showText() {
+  circles.each(function (d, i) {
+    // After resizing, add lines under the circles
+    const cx = x(i);
+    const colour = colours[i];
+    d3.select(this.parentNode)
+      .append("text")
+      .attr("x", cx)
+      .attr("y", startHeight + lineLength + 15)
+      .attr("fill", colour)
+      .attr("fill-opacity", 0.5)
+      .attr("text-anchor", "middle")
+      .text(labels[i])
+      .attr("class", "data-text");
   });
 }
-
-export function revertMoveBlueCircle() {}
-export function revertHideDataPoints() {}
