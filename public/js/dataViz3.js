@@ -5,12 +5,16 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 const width = 1000;
 const height = 1000;
 let hasDataVizStarted = false;
+let svg;
+export function stopDataViz3() {
+  svg.remove();
+}
 
 export function startDataViz3() {
   if (!hasDataVizStarted) {
     hasDataVizStarted = true;
     // Append the SVG object to the body of the page
-    var svg = d3
+    svg = d3
       .select("#dataviz_three")
       .append("svg")
       .attr("width", width)

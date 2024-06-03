@@ -2,15 +2,19 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
 // Set the dimensions and margins of the graph
-const width = 1000; //window.innerWidth;
+const width = window.innerWidth;
 const height = 1000; //3000;
 let hasDataVizStarted = false;
+let svg;
+export function stopDataViz2() {
+  //svg.remove();
+}
 
 export function startDataViz2() {
   if (!hasDataVizStarted) {
     hasDataVizStarted = true;
     // Append the SVG object to the body of the page
-    var svg = d3
+    svg = d3
       .select("#dataviz_two")
       .append("svg")
       .attr("width", width)
@@ -32,7 +36,6 @@ export function startDataViz2() {
             });
           }
         });
-        console.log("Processed data:", processedData);
 
         // Create a tooltip
         var Tooltip = d3
@@ -105,7 +108,7 @@ export function startDataViz2() {
               "collide",
               d3
                 .forceCollide()
-                .radius(3 + 0.5)
+                .radius(0 + 0.5)
                 .iterations(1),
             ); // Adjust collision radius for less space
 

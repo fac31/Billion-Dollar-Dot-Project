@@ -12,7 +12,7 @@ import {
   revertToStepTwo,
 } from "./steps.js";
 
-import { startDataViz2 } from "./dataViz2.js";
+import { startDataViz2, stopDataViz2 } from "./dataViz2.js";
 import { startDataViz3 } from "./dataViz3.js";
 
 function main() {
@@ -66,6 +66,9 @@ function handleStepExit(res) {
   switch (res.index) {
     case 0:
       exitStepOne();
+      break;
+    case 4:
+      stopDataViz2();
       break;
   }
 }
