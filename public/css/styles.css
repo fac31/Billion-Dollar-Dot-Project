@@ -199,6 +199,25 @@ div > p {
   width: 100%;
 }
 
+/* SNAP FEATURE */
+
+/* #scroll-art-one {
+  overflow-y: auto;
+  white-space: nowrap;
+  display: flex;
+}
+#scroll-art-one.snap {
+  flex-direction: column;
+  scroll-snap-type: y mandatory;
+}
+#scroll-art-one.snap > div {
+  scroll-snap-align: center;
+  scroll-snap-points-x: initial;
+  -ms-scroll-snap-points-x: initial;
+  scroll-snap-points-y: repeat(100%);
+  -ms-scroll-snap-points-y: repeat(100%);
+} */
+
 /* Media Queries */
 
 @media (max-width: 1720px) {
