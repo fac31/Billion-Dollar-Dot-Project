@@ -217,4 +217,9 @@ div > p {
     display: block;
     margin: auto;
   }
+
+  #billion-dollar-dot {
+    margin: 5px;
+    padding: 5px;
+  }
 }

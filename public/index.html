@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="..\css\styles.css" />
   <script src="../js/main.js" type="module" defer></script>
   <script src="../js/intro.js" type="module" defer></script>
+  <script src="../js/labelsfordots.js" type="module" defer></script>
   <!--<script src="../js/dataviz.js" type="module" defer></script> -->
   <script src="../js/dataviz2.js" type="module" defer></script>
   <script src="../js/dataviz3.js" type="module" defer></script>
@@ -931,15 +932,12 @@
       <p class="para-text">It's hard to comprehend how much wealth the Billionaires collectively have. So let's imagine
         this
         dot represents a Billion dollars. It's a Billion dollar dot.</p>
-      <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g transform="translate(5, 5)">
-          <circle class="node" r="1" cx="1" cy="1" fill="#0E8BCD" fill-opacity="0.5" stroke-width="0" />
-        </g>
+      <svg id="billion-dollar-dot" xmlns="http://www.w3.org/2000/svg" viewBox="55 55 90 90">
+        <circle cx="100" cy="100" r="15" fill="rgba(14,139,205,.5)" stroke-width="0" />
       </svg>
       <p>This is how many billion dollars the 2781 Billionaires have.</p>
     </article>
-    <svg id="layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 799.76">
+    <svg id="billions-of-dots" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 799.76">
       <circle cx="399.63" cy="400.17" r="1.11" fill="rgba(14,139,205,.5)" stroke-width="0" />
       <circle cx="402.96" cy="400.5" r="1.11" fill="rgba(14,139,205,.5)" stroke-width="0" />
       <circle cx="404.27" cy="401.11" r="1.11" fill="rgba(14,139,205,.5)" stroke-width="0" />
@@ -15250,10 +15248,10 @@
       <p> Right here. It is hiding in plain sight.
       </p>
       <p> If a 2% minimum tax on billionaires is introduced, we would raise $214 billion from less than 3000
-        individuals.
+        individuals. Hover over the dot to find out which part of the World could claim that billion dollars.
       </p>
       <div>
-        <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 834.76">
+        <svg id="tax-available" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 834.76">
           <circle cx="382.16" cy="400.6" r="9.9" fill="rgba(14,139,205,.5)" stroke-width="0" />
           <circle cx="411.73" cy="403.56" r="9.9" fill="rgba(14,139,205,.5)" stroke-width="0" />
           <circle cx="423.34" cy="408.94" r="9.9" fill="rgba(14,139,205,.5)" stroke-width="0" />
