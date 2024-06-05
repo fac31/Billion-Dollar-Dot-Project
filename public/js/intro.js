@@ -36,6 +36,7 @@ function startIntro() {
           circle.style.marginTop = circleMargin + "px";
         } else {
           clearInterval(timer);
+          setTimeout(() => fadeOut(circle, 20), 1000); // The console is saying fadeout is not defined - needs fixing
         }
       }, 10);
     }, 2000);

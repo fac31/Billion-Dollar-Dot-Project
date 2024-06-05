@@ -192,4 +192,29 @@ div > p {
     margin-left: 110px;
     top: 60%;
   }
+
+  #dataviz-two-sizing {
+    width: max-content;
+  }
+
+  .dataviz_three_spacing {
+    margin-top: 5000px;
+  }
+
+  .para-text {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #Layer_1 {
+    max-width: 800px;
+    max-height: 800px;
+    display: block;
+    margin: auto;
+  }
+
+  #layer_2 {
+    display: block;
+    margin: auto;
+  }
 }
