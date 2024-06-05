@@ -79,7 +79,8 @@ export function startDataViz() {
     .duration(3000)
     .delay((d, i) => i * 750)
     // Transition to final positions based on data
-    .attr("cx", (_, i) => x(i));
+    .attr("cx", (_, i) => x(i))
+    .attr("opacity", 0.5);
 }
 export function restartDataViz() {
   hideLines();
@@ -89,7 +90,8 @@ export function restartDataViz() {
     .duration(3000)
     .attr("cy", startHeight - initialRadius)
     .attr("r", initialRadius)
-    .attr("cx", (_, i) => x(i));
+    .attr("cx", (_, i) => x(i))
+    .attr("opacity", 0.5);
 }
 
 //  STEP TWO FUNCTIONS
