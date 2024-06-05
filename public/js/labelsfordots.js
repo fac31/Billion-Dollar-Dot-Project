@@ -97,15 +97,14 @@ d3.csv(
     .style("padding", "5px");
 
   // Show tooltip on hover
-  circles2
-    .on("mouseover", function (event, d) {
-      tooltip.transition().duration(200).style("opacity", 0.9);
-      tooltip
-        .html(`This Billion Dollars could belong to ${d.country}`)
-        .style("left", event.pageX + "px")
-        .style("top", event.pageY - 28 + "px");
-    })
-    .on("mouseout", function () {
-      tooltip.transition().duration(500).style("opacity", 0);
-    });
+  circles2.on("mouseenter", function (event, d) {
+    tooltip.transition().duration(200).style("opacity", 0.9);
+    tooltip
+      .html(`This Billion Dollars could belong to ${d.country}`)
+      .style("left", event.pageX + "px")
+      .style("top", event.pageY - 28 + "px");
+  });
+  // .on("mouseout", function () {
+  //   tooltip.transition().duration(500).style("opacity", 0);
+  // });
 });

@@ -178,13 +178,25 @@ div > p {
   font-size: var(--small-fs);
 }
 #billion-dollar-dot {
-  height: 50vh;
+  height: 80vh;
   width: 100%;
-  margin: auto;
 }
+#billions-of-dots {
+  padding: 100px;
+}
+
 #dataviz3-text {
   margin-top: 100px;
   margin-bottom: 100px;
+}
+#tax-available {
+  width: 100%;
+  height: 80vh;
+  margin-bottom: 100px;
+}
+#Layer_2 {
+  height: 90vh;
+  width: 100%;
 }
 
 /* Media Queries */
@@ -223,10 +235,9 @@ div > p {
     margin: auto;
   }
 
-  #layer_2 {
+  #Layer_2 {
     display: block;
     margin: auto;
-    margin-top: -200px;
   }
 
   #billion-dollar-dot {
