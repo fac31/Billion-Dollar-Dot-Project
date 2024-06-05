@@ -33,7 +33,7 @@ circles1
       .style("left", event.pageX + "px")
       .style("top", event.pageY - 28 + "px");
   })
-  .on("mouseout", function (d) {
+  .on("mouseout", function () {
     tooltip1.transition().duration(500).style("opacity", 0);
   });
 
@@ -68,7 +68,7 @@ d3.csv(
         .style("left", event.pageX + "px")
         .style("top", event.pageY - 28 + "px");
     })
-    .on("mouseout", function (d) {
+    .on("mouseout", function () {
       tooltip.transition().duration(500).style("opacity", 0);
     });
 });
@@ -104,7 +104,7 @@ d3.csv(
         .style("left", event.pageX + "px")
         .style("top", event.pageY - 28 + "px");
     })
-    .on("mouseout", function (d) {
+    .on("mouseout", function () {
       tooltip.transition().duration(500).style("opacity", 0);
     });
 });
