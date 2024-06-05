@@ -158,7 +158,7 @@ article {
 }
 
 .step {
-  height: 100vh;
+  height: 90vh;
   width: 100%;
   margin-top: 200px;
 }
@@ -176,6 +176,15 @@ div > p {
   text-align: center;
   padding: 1rem;
   font-size: var(--small-fs);
+}
+#billion-dollar-dot {
+  height: 50vh;
+  width: 100%;
+  margin: auto;
+}
+#dataviz3-text {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 /* Media Queries */
@@ -206,7 +215,8 @@ div > p {
     padding: 0px;
   }
 
-  #Layer_1 {
+  #Layer_1,
+  #Layer_2 {
     max-width: 800px;
     max-height: 800px;
     display: block;
@@ -216,6 +226,7 @@ div > p {
   #layer_2 {
     display: block;
     margin: auto;
+    margin-top: -200px;
   }
 
   #billion-dollar-dot {

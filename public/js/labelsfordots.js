@@ -60,17 +60,18 @@ d3.csv(
     .style("padding", "5px");
 
   // Show tooltip on hover
-  circles2
-    .on("mouseover", function (event, d) {
-      tooltip.transition().duration(200).style("opacity", 0.9);
-      tooltip
-        .html(`This Billion Dollars belongs to ${d.name}`)
-        .style("left", event.pageX + "px")
-        .style("top", event.pageY - 28 + "px");
-    })
-    .on("mouseout", function () {
-      tooltip.transition().duration(500).style("opacity", 0);
-    });
+  circles2.on("mouseenter", function (event, d) {
+    console.log("mouseover");
+    tooltip.transition().duration(200).style("opacity", 0.9);
+    tooltip
+      .html(`This Billion Dollars belongs to ${d.name}`)
+      .style("left", event.pageX + "px")
+      .style("top", event.pageY - 28 + "px");
+  });
+  // .on("mouseexit", function () {
+  //   console.log("mouseout");
+  //   tooltip.transition().duration(500).style("opacity", 0);
+  // });
 });
 
 /* LABELS FOR THE LAST VIZ */

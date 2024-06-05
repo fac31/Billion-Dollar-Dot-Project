@@ -148,7 +148,7 @@ export function moveBlueCircle() {
     .transition()
     .duration(3000)
     .delay((_, i) => i * 750)
-    .attr("cx", (_, i) => x(0))
+    .attr("cx", () => x(0))
     .attr("cy", (d) => startHeight - radiusScale(d) * 1.5)
     .attr("r", (d) => radiusScale(d) * 1.5);
 
@@ -158,7 +158,7 @@ export function moveBlueCircle() {
     .transition()
     .duration(3000)
     .delay((_, i) => i * 750)
-    .attr("cx", (_, i) => x(1))
+    .attr("cx", () => x(1))
     .attr("cy", (d) => startHeight - radiusScale(d) * 1.5)
     .attr("r", (d) => radiusScale(d) * 1.5);
 

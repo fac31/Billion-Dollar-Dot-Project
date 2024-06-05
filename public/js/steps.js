@@ -1,4 +1,4 @@
-import { fadeIn, fadeOut, fadeInSVG } from "./fade.js";
+import { fadeOut, fadeInSVG } from "./fade.js";
 import {
   changeSize,
   hideDataPoints,
@@ -27,12 +27,6 @@ export function revertToStepOne() {
   restartDataViz();
 }
 
-export function exitStepOne() {
-  for (const circle of introCircles.children) {
-    fadeIn(circle, 20, 0.5);
-  }
-}
-
 export function enterStepTwo() {
   dataViz1.setAttribute("height", "600px");
   transitionToStep(step2);
@@ -53,7 +47,8 @@ export function enterStepFour() {
 }
 
 function transitionToStep(step) {
-  step.append(dataViz1);
   dataViz1.firstChild.setAttribute("opacity", "0");
+  step.append(dataViz1);
+
   fadeInSVG(dataViz1.firstChild, 10, 1);
 }
