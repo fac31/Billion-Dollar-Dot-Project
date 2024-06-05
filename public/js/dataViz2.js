@@ -52,7 +52,7 @@ export function startDataViz2() {
         };
 
         // Append circles for each data point
-        var circles = svg
+        svg
           .selectAll(".node")
           .data(data)
           .enter()
