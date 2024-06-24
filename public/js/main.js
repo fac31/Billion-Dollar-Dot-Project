@@ -7,7 +7,6 @@ import {
   enterStepThree,
   enterStepTwo,
   enterStepFour,
-  exitStepOne,
   revertToStepOne,
   revertToStepTwo,
 } from "./steps.js";
@@ -64,9 +63,6 @@ function handleStepEnter(res) {
 }
 function handleStepExit(res) {
   switch (res.index) {
-    case 0:
-      exitStepOne();
-      break;
     case 4:
       stopDataViz2();
       break;
