@@ -55,7 +55,7 @@ small {
   margin-left: -31px;
 
   transform: rotate(270deg);
-  -webkit-transform: rotate(270deg); /* For older WebKit browsers */
+  -webkit-transform: rotate(270deg);
 
   width: 224px;
   text-align: center;
@@ -198,25 +198,6 @@ div > p {
   height: 90vh;
   width: 100%;
 }
-
-/* SNAP FEATURE */
-
-/* #scroll-art-one {
-  overflow-y: auto;
-  white-space: nowrap;
-  display: flex;
-}
-#scroll-art-one.snap {
-  flex-direction: column;
-  scroll-snap-type: y mandatory;
-}
-#scroll-art-one.snap > div {
-  scroll-snap-align: center;
-  scroll-snap-points-x: initial;
-  -ms-scroll-snap-points-x: initial;
-  scroll-snap-points-y: repeat(100%);
-  -ms-scroll-snap-points-y: repeat(100%);
-} */
 
 /* Media Queries */
 

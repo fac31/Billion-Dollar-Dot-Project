@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3030;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,8 +15,8 @@ const __dirname = path.dirname(__filename);
 //const staticModules = express.static(path.join(__dirname, "node_modules"));
 
 //  Serves Static Files from public
-const staticHandler = express.static(path.join(__dirname, "public"));
-app.use(staticHandler);
+app.use(express.static(path.join(__dirname, "public")));
+
 //  Middleware
 //app.use("/node_modules", staticModules);
 
