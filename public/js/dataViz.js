@@ -1,6 +1,8 @@
 /* Importing D3*/
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
+const DURATION = 1500;
+
 // Bringing data in as an array
 const data = [2, 22, 76, 38, 19.4, 11.2, 6.4, 3.5, 1.1];
 
@@ -41,6 +43,7 @@ const startHeight = 200;
 const svg = d3
   .select("#dataviz_one")
   .append("svg")
+  .attr("opacity", 0)
   .attr("width", width)
   .attr("height", height + lineLength);
 
@@ -69,25 +72,27 @@ const circles = svg
   .attr("opacity", 0.5); // Set opacity to 50%
 
 //  STEP ONE FUNCTIONS
-export function startDataViz() {
+export function startDataViz1() {
   circles
     // Reset positions of circles
     .attr("cx", width - initialRadius) // Initial position to the right
     .attr("cy", startHeight - initialRadius) // Initial top alignment
     .attr("r", initialRadius) // Initial radius
     .transition()
-    .duration(3000)
-    .delay((d, i) => i * 750)
+    .duration(DURATION)
+    .delay((d, i) => i * 50)
     // Transition to final positions based on data
     .attr("cx", (_, i) => x(i))
     .attr("opacity", 0.5);
 }
-export function restartDataViz() {
+
+export function restartDataViz1() {
   hideLines();
   hideText();
+
   circles
     .transition()
-    .duration(3000)
+    .duration(DURATION)
     .attr("cy", startHeight - initialRadius)
     .attr("r", initialRadius)
     .attr("cx", (_, i) => x(i))
@@ -99,28 +104,25 @@ export function restartDataViz() {
 export function changeSize() {
   circles
     .transition()
-    .duration(3000)
+    .duration(DURATION)
     .attr("cx", (_, i) => x(i))
     .attr("cy", (d) => startHeight - radiusScale(d))
     .attr("r", (d) => radiusScale(d));
   showLines();
   showText();
 }
+
 export function revertChangeSize() {
   x.range([0, width]);
-  hideLines();
-  hideText();
   circles.each(function (d, i) {
     d3.select(this)
       .transition()
-      .duration(3000)
+      .duration(DURATION)
       .attr("opacity", 0.5)
       .attr("cx", x(i))
       .attr("cy", (d) => startHeight - radiusScale(d))
       .attr("r", (d) => radiusScale(d));
   });
-  showLines();
-  showText();
 }
 
 //  STEP THREE FUNCTIONS
@@ -130,7 +132,7 @@ export function hideDataPoints() {
     if (i !== 0 && i !== 6) {
       d3.select(this)
         .transition()
-        .duration(3000)
+        .duration(DURATION)
         .attr("opacity", 0)
         .attr("r", 0);
     }
@@ -148,7 +150,7 @@ export function moveBlueCircle() {
   circles
     .filter((_, i) => i === 0)
     .transition()
-    .duration(3000)
+    .duration(DURATION)
     .delay((_, i) => i * 750)
     .attr("cx", () => x(0))
     .attr("cy", (d) => startHeight - radiusScale(d) * 1.5)
@@ -158,7 +160,7 @@ export function moveBlueCircle() {
   circles
     .filter((_, i) => i === 6)
     .transition()
-    .duration(3000)
+    .duration(DURATION)
     .delay((_, i) => i * 750)
     .attr("cx", () => x(1))
     .attr("cy", (d) => startHeight - radiusScale(d) * 1.5)
@@ -215,7 +217,7 @@ export function growCircles() {
   circles
     .filter((_, i) => i === 0 || i === 6)
     .transition()
-    .duration(3000)
+    .duration(DURATION)
     .attr("cy", (d) => startHeight - radiusScale(d) * 3)
     .attr("r", (d) => radiusScale(d) * 3);
 
@@ -223,23 +225,28 @@ export function growCircles() {
   svg
     .selectAll(".data-line")
     .transition()
-    .duration(3000)
+    .duration(DURATION)
     .attr("y1", startHeight)
     .attr("y2", startHeight + lineLength * 2);
 
   svg
     .selectAll(".data-text")
     .transition()
-    .duration(3000)
+    .duration(DURATION)
     .attr("y", startHeight + lineLength * 2 + 15);
 }
 
-function hideLines() {
+export function hideLines() {
   svg.selectAll(".data-line").transition().duration(500).attr("opacity", 0);
 }
 
-function hideText() {
+export function hideText() {
   svg.selectAll(".data-text").transition().duration(500).attr("opacity", 0);
+}
+
+export function hideLinesAndText() {
+  hideLines();
+  hideText();
 }
 
 function showLines() {
@@ -274,4 +281,9 @@ function showText() {
       .text(labels[i])
       .attr("class", "data-text");
   });
+}
+
+export function showLinesAndText() {
+  showLines();
+  showText();
 }

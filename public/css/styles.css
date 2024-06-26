@@ -24,6 +24,8 @@ html {
   --extra-bold: 800;
   --small-fs: 1.5rem;
   --large-fs: 15rem;
+
+  --circle-width: 9.25vw;
 }
 
 #start {
@@ -38,6 +40,7 @@ body {
   background-color: var(--beige);
   margin: 0px;
 }
+
 #fade-elements {
   position: absolute;
   bottom: 0px;
@@ -46,23 +49,24 @@ body {
 }
 
 h1 {
-  font-size: var(--large-fs);
+  font-size: 12vw;
+  position: relative;
 }
+
 small {
   position: absolute;
-  top: 50%;
-  margin-top: -10px;
-  margin-left: -31px;
-
+  margin-left: -1.25vw;
+  top: 8vw;
+  transform-origin: center;
   transform: rotate(270deg);
   -webkit-transform: rotate(270deg);
-
-  width: 224px;
+  width: 10.5vw;
   text-align: center;
-
   color: var(--beige);
-  font-size: var(--small-fs);
+  font-size: 0.9vw;
   background-color: var(--green);
+  letter-spacing: 1px;
+  font-weight: normal;
 }
 
 #down-arrow {
@@ -94,27 +98,39 @@ small {
   flex-direction: column;
 }
 
+#dataviz_one {
+  /* background: rgba(255, 0, 255, 0.1); */
+  position: sticky;
+  top: 0;
+  z-index: 0;
+}
+
+#dataviz_one {
+}
 #dataviz_one,
 #dataviz_two,
 #dataviz_three {
   width: 100%;
-  /* height: 600px; */
   height: 300px;
   margin: 20px auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 /* CIRCLE ELEMENTS */
-#circles-intro > * {
-  position: absolute;
-  margin-left: 468px;
-  top: 50%;
-  margin-top: -85px;
+#circles-intro {
+  position: relative;
+  top: -22.5vw;
+  left: 6.5vw;
 }
+
 .circles > * {
-  width: 185px;
-  height: 185px;
+  position: absolute;
+  right: 16.5vw;
+  top: -200px;
+  width: 9.1vw;
+  height: 9vw;
   border-radius: 50%;
   opacity: 0;
 }
@@ -146,29 +162,35 @@ small {
   background-color: var(--purple);
 }
 
-/* SCROLL ELEMENTS */
-
-#scrolly {
-  position: relative;
-}
-
-article {
-  position: relative;
+#container {
   width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory !important;
+  /* position: absolute; */
+  /* top: 0; */
+  /* scroll-behavior: smooth; */
 }
 
 .step {
-  height: 90vh;
+  height: 100vh;
   width: 100%;
-  margin-top: 200px;
+  scroll-snap-align: start;
+  /* border: 5px solid red; */
 }
+
+#step0 {
+  position: relative;
+}
+
 #step1Viz {
   height: 300px;
 }
+
 #main-article {
   width: 70%;
   margin: auto;
-  margin-top: 200px;
+  /* margin-top: 200px; */
   font-size: var(--small-fs);
 }
 
@@ -201,14 +223,15 @@ div > p {
 
 /* Media Queries */
 
-@media (max-width: 1720px) {
-  h1 {
-    text-align: center;
-  }
-  small {
-    margin-top: -200px;
-  }
+.para-text {
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--beige);
+  position: relative;
+  z-index: 1;
+}
 
+@media (max-width: 1720px) {
   #circles-intro > * {
     margin-left: 110px;
     top: 60%;
@@ -220,11 +243,6 @@ div > p {
 
   .dataviz_three_spacing {
     margin-top: 5000px;
-  }
-
-  .para-text {
-    margin: 0px;
-    padding: 0px;
   }
 
   #Layer_1,

@@ -25,7 +25,7 @@ export function startDataViz3() {
       "https://raw.githubusercontent.com/fac31/Lucy-Jack-Final/main/data-for-dataviz-three.csv",
     )
       .then(function (data) {
-        console.log("Data loaded");
+        // console.log("Data loaded");
 
         // Create a tooltip
         var Tooltip = d3

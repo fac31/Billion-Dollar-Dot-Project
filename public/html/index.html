@@ -11,7 +11,7 @@
   <script src="../js/main.js" type="module" defer></script>
   <script src="../js/intro.js" type="module" defer></script>
   <script src="../js/labelsfordots.js" type="module" defer></script>
-  <script src="../js/dataviz.js" type="module" defer></script>
+  <!-- <script src="../js/dataViz.js" type="module" defer></script> -->
   <script src="../js/dataviz2.js" type="module" defer></script>
   <script src="../js/dataviz3.js" type="module" defer></script>
   <!-- Scrollama Import -->
@@ -25,70 +25,76 @@
 </head>
 
 <body>
-  <div class="center" id="start">
-    <h1><small>WHERE TO FIND</small>$200 BILLION</h1>
-    <div id="circles-intro" class="circles">
-      <div id="blue-c"></div>
-      <div id="green-c"></div>
-      <div id="yellow-c"></div>
-      <div id="pink-c"></div>
-      <div id="grey-c"></div>
-      <div id="light-green-c"></div>
-      <div id="dark-blue-c"></div>
-      <div id="orange-c"></div>
-      <div id="purple-c"></div>
+  <div id="container">
+    <div id="step0" class="step center flex-column" data-step="0">
+      <div class="center" id="start">
+        <div id="hero-text">
+          <h1>
+            <small>WHERE TO FIND</small>
+            $200 BILLION
+          </h1>
+          <div id="circles-intro" class="circles">
+            <div id="blue-c"></div>
+            <div id="green-c"></div>
+            <div id="yellow-c"></div>
+            <div id="pink-c"></div>
+            <div id="grey-c"></div>
+            <div id="light-green-c"></div>
+            <div id="dark-blue-c"></div>
+            <div id="orange-c"></div>
+            <div id="purple-c"></div>
+          </div>
+        </div>
+        <div id="fade-elements" class="center">
+          <h2>It's down here</h2>
+          <img src="../assets/Arrow-down.svg" id="down-arrow"></img>
+        </div>
+      </div>
     </div>
-    <div id="fade-elements" class="center">
-      <h2>It's down here</h2>
-      <img src="../assets/Arrow-down.svg" id="down-arrow"></img>
-    </div>
-  </div>
-
-
-  <section class="scrolly" id="scrolly-one">
-    <article id="scroll-one-art" class="snap">
-      <div id="step1" class="step center flex-column" data-step="1">
-        <p class="para-text">
-          Most would like to be a little wealthier. Some want to be the wealthiest.
-        </p>
-        <p class="para-text">
-          2781 people in the World have reached the financial summit: The Billionaires.
-        </p>
-        <p class="para-text">
-          They each have a private wealth of at least 1,000,000,000: 9 zeros.
-        </p>
-        <p class="para-text">
-          This minute portion of the population has captured an outsized amount of total global wealth.
-        </p>
-
-        <div id="step1Viz"></div>
-      </div>
-      <div id="step2" class="step center flex-column" data-step="2">
-        <p class="para-text">
-          Here's what that looks like. This represents who owns all of the World's wealth.
-        </p>
-        <p class="para-text">
-          The poorest half of the World share 2% of all the wealth in the World. The top 10% have captured 78%.
-        </p>
-
-      </div>
-      <div id="step3" class="step center flex-column" data-step="3">
-        <p class="para-text">
-          And then there's the Billionaires. Less than 3000 individuals have three times as much wealth as half of the
-          World's population.
-        </p>
-        <p class="para-text">
-          The gap between the poorest and the richest has been growing bigger
-        </p>
-        <p class="para-text">
-          and bigger
-        </p>
-        <p class="para-text">
-          for the last four decades.
-        </p>
-      </div>
-    </article>
     <div id="dataviz_one"></div>
+
+    <div id="step1" class="step center flex-column" data-step="1">
+      <p class="para-text">
+        Most would like to be a little wealthier. Some want to be the wealthiest.
+      </p>
+      <p class="para-text">
+        2781 people in the World have reached the financial summit: The Billionaires.
+      </p>
+      <p class="para-text">
+        They each have a private wealth of at least 1,000,000,000: 9 zeros.
+      </p>
+      <p class="para-text">
+        This minute portion of the population has captured an outsized amount of total global wealth.
+      </p>
+    </div>
+
+    <div id="step2" class="step center flex-column" data-step="2">
+      <p class="para-text">
+        Here's what that looks like. This represents who owns all of the World's wealth.
+      </p>
+      <p class="para-text">
+        The poorest half of the World share 2% of all the wealth in the World. The top 10% have captured 78%.
+      </p>
+
+    </div>
+
+    <div id="step3" class="step center flex-column" data-step="3">
+      <p class="para-text">
+        And then there's the Billionaires. Less than 3000 individuals have three times as much wealth as half of the
+        World's population.
+      </p>
+      <p class="para-text">
+        The gap between the poorest and the richest has been growing bigger
+      </p>
+      <p class="para-text">
+        and bigger
+      </p>
+      <p class="para-text">
+        for the last four decades.
+      </p>
+    </div>
+
+  </div>
     <article id="main-article">
       <p>
         In the 1980s, Thatcher and Reagan championed a radical new idea: Individuals should be free to pursue wealth
@@ -165,8 +171,10 @@
       </svg>
       <p>This is how many billion dollars the 2781 Billionaires have.</p>
     </article>
+
     <div id="billions-of-dots-viz"></div>
-    <div>
+
+    <div >
       <div id="dataviz3-text">
         <p> So where can you find $200 billion?
         </p>
@@ -179,8 +187,6 @@
 
       <div id="tax-viz"></div>
     </div>
-  </section>
-
 
 
   <script>
@@ -193,7 +199,7 @@
           return response.text();
         })
         .then(data => {
-          console.log(`SVG data for ${containerId}:`, data);  // Log the SVG content to check
+          // console.log(`SVG data for ${containerId}:`, data);  // Log the SVG content to check
           document.getElementById(containerId).innerHTML = data;
           makeResponsive(containerId);
         })

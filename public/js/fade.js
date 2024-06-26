@@ -38,7 +38,7 @@ export function fadeOutSVG(svg, delay) {
 }
 
 export function fadeInSVG(svg, delay, maxOpacity) {
-  svg.setAttribute("opacity", "0");
+  // svg.setAttribute("opacity", "0");
   let opacity = 0;
   let timer = setInterval(function () {
     if (opacity < maxOpacity) {
