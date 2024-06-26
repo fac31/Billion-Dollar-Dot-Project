@@ -5,7 +5,8 @@ let circleMargin = -85;
 export function runIntroAnimation() {
   const arrowElement = document.getElementById("fade-elements");
 
-  setTimeout(() => fadeIn(arrowElement, 10, 1), 2000);
+  setTimeout(() => fadeIn(arrowElement, 10, 1), 250);
+
   let maxMargin = -85;
   for (const circle of circles.children) {
     setTimeout(() => fadeIn(circle, 20, 0.5), 1000);

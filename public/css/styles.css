@@ -26,6 +26,10 @@ html {
   --large-fs: 15rem;
 
   --circle-width: 9.25vw;
+  --screen-small-container: 90%;
+  --screen-large-container: 70%;
+  --screen-small-step-height: 70vh;
+  --screen-large-step-height: 90vh;
 }
 
 #start {
@@ -85,6 +89,12 @@ small {
   font-weight: var(--extra-bold);
 }
 
+p {
+  font-size: var(--small-fs);
+  padding: 1rem;
+  margin: auto;
+}
+
 .center {
   display: flex;
   align-items: center;
@@ -105,6 +115,7 @@ small {
   height: 100vh;
   width: 100%;
 }
+
 #dataviz_one {
   position: absolute;
   bottom: 300px;
@@ -167,36 +178,31 @@ small {
 }
 
 .step {
-  margin-top: 200px;
-  height: 9vh;
-  height: 80vh;
-  width: 100%;
+  margin: auto;
+  height: var(--screen-large-step-height);
+  width: var(--screen-large-container);
+}
+
+.step p {
+  text-align: center;
 }
 
 #step0 {
   position: relative;
+  width: 100%;
 }
 
 #step3 {
-  margin-bottom: 400px;
-}
-
-#step1Viz {
-  height: 300px;
+  padding-bottom: 200px;
 }
 
 #main-article {
-  width: 70%;
+  width: var(--screen-large-container);
   margin: auto;
-  margin-top: 400px;
+  margin-top: 200px;
   font-size: var(--small-fs);
 }
 
-div > p {
-  text-align: center;
-  padding: 1rem;
-  font-size: var(--small-fs);
-}
 #billion-dollar-dot {
   height: 80vh;
   width: 100%;
@@ -219,17 +225,24 @@ div > p {
   width: 100%;
 }
 
-/* Media Queries */
+@media (max-width: 768px) {
+  p {
+    font-size: 14px;
+  }
 
-.para-text {
-  margin: 0px;
-  padding: 0px;
-  /* background-color: var(--beige); */
-  position: relative;
-  z-index: 1;
-}
+  #step0 {
+    height: 100vh;
+  }
 
-@media (max-width: 1720px) {
+  .step {
+    height: var(--screen-small-step-height);
+  }
+
+  .step,
+  #main-article {
+    width: var(--screen-small-container);
+  }
+
   #circles-intro > * {
     margin-left: 110px;
     top: 60%;

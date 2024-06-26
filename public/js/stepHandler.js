@@ -11,7 +11,7 @@ import {
   revertToStepTwo,
 } from "./steps.js";
 
-const THRESHOLD = 0.4;
+const THRESHOLD = 0.5;
 let inProgress = 0;
 
 export function handleStepProgress({ index: step, direction, progress }) {
