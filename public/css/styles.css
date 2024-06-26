@@ -162,21 +162,9 @@ small {
   background-color: var(--purple);
 }
 
-#container {
-  width: 100%;
-  height: 100vh;
-  overflow-y: auto;
-  scroll-snap-type: y mandatory !important;
-  /* position: absolute; */
-  /* top: 0; */
-  /* scroll-behavior: smooth; */
-}
-
 .step {
   height: 100vh;
   width: 100%;
-  scroll-snap-align: start;
-  /* border: 5px solid red; */
 }
 
 #step0 {

@@ -2,15 +2,16 @@ import {
   enterStepOne,
   enterStepThree,
   enterStepTwo,
-  exitStepOneUp,
-  exitStepThreeUp,
-  exitStepZeroUp,
+  exitStepOneDown,
+  exitStepThreeDown,
+  exitStepZeroDown,
   revertToStepOne,
   revertToStepThree,
   revertToStepTwo,
 } from "./steps.js";
 
 export function handleStepEnter({ index: step, direction }) {
+  console.log({ step, direction });
   switch (step) {
     case 1:
       if (direction == "up") {
@@ -42,18 +43,18 @@ export function handleStepEnter({ index: step, direction }) {
 export function handleStepExit({ index: step, direction }) {
   switch (step) {
     case 0:
-      if (direction == "up") {
-        exitStepZeroUp();
+      if (direction == "down") {
+        exitStepZeroDown();
       }
       break;
     case 1:
-      if (direction === "up") {
-        exitStepOneUp();
+      if (direction === "down") {
+        exitStepOneDown();
       }
       break;
     case 3:
-      if (direction === "up") {
-        exitStepThreeUp();
+      if (direction === "down") {
+        exitStepThreeDown();
       }
       break;
   }

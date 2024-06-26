@@ -12,7 +12,7 @@ import {
 const introCircles = document.getElementById("circles-intro");
 const dataViz1 = document.getElementById("dataviz_one");
 
-export function exitStepZeroUp() {
+export function exitStepZeroDown() {
   console.log("exitStepZeroUp");
   introCircles.style.opacity = 0;
   fadeInSVG(dataViz1.firstChild, 10, 1);
@@ -27,10 +27,6 @@ export function revertToStepOne() {
   hideLinesAndText();
   revertChangeSize();
   restartDataViz1();
-}
-
-export function exitStepOneUp() {
-  // placeholder
 }
 
 export function exitStepOneDown() {
@@ -54,9 +50,11 @@ export function enterStepThree() {
 }
 
 export function revertToStepThree() {
-  // placeholder
+  fadeInSVG(dataViz1.firstChild, 10, 1);
+  hideDataPoints();
+  moveBlueCircle();
 }
 
-export function exitStepThreeUp() {
+export function exitStepThreeDown() {
   fadeOutSVG(dataViz1.firstChild, 10, 1);
 }
