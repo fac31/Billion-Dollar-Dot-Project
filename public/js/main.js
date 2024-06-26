@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 // We are importing scrollama through a cdn in index.html
 import { runIntroAnimation } from "../js/intro.js";
-import { handleStepEnter, handleStepExit } from "./stepHandler.js";
+import { handleStepProgress, handleStepExit } from "./stepHandler.js";
 
 function main() {
   const dataviz_one = document.getElementById("dataviz_one");
@@ -17,9 +17,11 @@ function main() {
       step: ".step", // required
       offset: 0.5, // optional, default = 0.5
       debug: false, // optional, default = false
+      progress: true,
     })
-    .onStepEnter(handleStepEnter)
+    .onStepProgress(handleStepProgress)
     .onStepExit(handleStepExit);
+  // .onStepEnter(handleStepEnter)
 
   window.addEventListener("resize", () => {
     scroller.resize();

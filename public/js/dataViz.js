@@ -1,7 +1,7 @@
 /* Importing D3*/
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
-const DURATION = 1500;
+const DURATION = 1000;
 
 // Bringing data in as an array
 const data = [2, 22, 76, 38, 19.4, 11.2, 6.4, 3.5, 1.1];

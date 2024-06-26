@@ -2,6 +2,7 @@ import {
   enterStepOne,
   enterStepThree,
   enterStepTwo,
+  enterStepZero,
   exitStepOneDown,
   exitStepThreeDown,
   exitStepZeroDown,
@@ -10,9 +11,20 @@ import {
   revertToStepTwo,
 } from "./steps.js";
 
-export function handleStepEnter({ index: step, direction }) {
-  console.log({ step, direction });
+const THRESHOLD = 0.4;
+let inProgress = 0;
+
+export function handleStepProgress({ index: step, direction, progress }) {
+  // console.log(step, direction, progress);
+  if (progress < THRESHOLD || inProgress === step) return;
+
+  inProgress = step;
+
   switch (step) {
+    case 0: {
+      enterStepZero();
+      break;
+    }
     case 1:
       if (direction == "up") {
         revertToStepOne();
@@ -54,6 +66,7 @@ export function handleStepExit({ index: step, direction }) {
       break;
     case 3:
       if (direction === "down") {
+        inProgress = null;
         exitStepThreeDown();
       }
       break;
