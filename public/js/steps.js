@@ -28,12 +28,14 @@ export function exitStepZeroDown() {
 
 export function enterStepOne() {
   console.log("enterStepOne");
+  fadeInSVG(dataViz1.firstChild, 10, 1);
   hideLinesAndText();
   startDataViz1();
 }
 
 export function revertToStepOne() {
   console.log("revertToStepOne");
+  fadeInSVG(dataViz1.firstChild, 10, 1);
   hideLinesAndText();
   revertChangeSize();
   restartDataViz1();

@@ -2,6 +2,8 @@
 // We are importing scrollama through a cdn in index.html
 import { runIntroAnimation } from "../js/intro.js";
 import { handleStepProgress, handleStepExit } from "./stepHandler.js";
+import { startDataViz2, stopDataViz2 } from "./dataViz2.js";
+import { startDataViz3 } from "./dataViz3.js";
 
 function main() {
   const dataviz_one = document.getElementById("dataviz_one");
@@ -21,8 +23,9 @@ function main() {
     })
     .onStepProgress(handleStepProgress)
     .onStepExit(handleStepExit);
-  // .onStepEnter(handleStepEnter)
 
+  startDataViz2();
+  startDataViz3();
   window.addEventListener("resize", () => {
     scroller.resize();
 

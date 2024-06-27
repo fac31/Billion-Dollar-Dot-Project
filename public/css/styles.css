@@ -27,7 +27,7 @@ html {
 
   --circle-width: 9.25vw;
   --screen-small-container: 90%;
-  --screen-large-container: 70%;
+  --screen-large-container: 60%;
   --screen-small-step-height: 70vh;
   --screen-large-step-height: 90vh;
 }
@@ -110,6 +110,7 @@ p {
 
 #data_viz_container {
   position: fixed;
+  z-index: 0;
   top: 0;
   left: 0;
   height: 100vh;
@@ -119,14 +120,20 @@ p {
 #dataviz_one {
   position: absolute;
   bottom: 300px;
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#dataviz_one,
 #dataviz_two,
 #dataviz_three {
+  position: relative;
+  z-index: 1000;
   width: 100%;
-  height: 300px;
-  /* margin: 20px auto; */
+  margin: 20px auto;
+  height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -196,19 +203,30 @@ p {
   padding-bottom: 200px;
 }
 
-#main-article {
+article {
   width: var(--screen-large-container);
   margin: auto;
   margin-top: 200px;
   font-size: var(--small-fs);
+  position: relative;
+  z-index: 1;
 }
 
 #billion-dollar-dot {
   height: 80vh;
   width: 100%;
 }
-#billions-of-dots {
-  padding: 100px;
+
+#billions-of-dots-viz {
+  position: relative;
+  z-index: 1;
+  padding: 100px 0;
+  width: 1200px;
+  margin: auto;
+}
+.tooltip {
+  position: relative;
+  z-index: 2;
 }
 
 #dataviz3-text {
@@ -239,7 +257,7 @@ p {
   }
 
   .step,
-  #main-article {
+  article {
     width: var(--screen-small-container);
   }
 

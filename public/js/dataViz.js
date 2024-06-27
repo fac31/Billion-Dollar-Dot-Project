@@ -1,7 +1,8 @@
 /* Importing D3*/
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
-const DURATION = 1000;
+const NORMAL_SPEED = 750;
+const FAST_SPEED = 250;
 
 // Bringing data in as an array
 const data = [2, 22, 76, 38, 19.4, 11.2, 6.4, 3.5, 1.1];
@@ -33,7 +34,7 @@ const labels = [
 ];
 
 // Setting the width, height and radius of the svg, circles and lines
-const width = window.innerWidth * 0.8;
+const width = 1100;
 const count = 9;
 const initialRadius = width / 2 / count;
 const height = initialRadius * 2;
@@ -81,7 +82,7 @@ export function startDataViz1() {
     .attr("cy", height - initialRadius) // Initial top alignment
     .attr("r", initialRadius) // Initial radius
     .transition()
-    .duration(DURATION)
+    .duration(NORMAL_SPEED)
     .delay((_, i) => i * 50)
     // Transition to final positions based on data
     .attr("cx", (_, i) => x()(i))
@@ -94,7 +95,7 @@ export function restartDataViz1() {
 
   circles
     .transition()
-    .duration(DURATION)
+    .duration(NORMAL_SPEED)
     .attr("cy", height - initialRadius)
     .attr("r", initialRadius)
     .attr("cx", (_, i) => x()(i))
@@ -106,7 +107,7 @@ export function restartDataViz1() {
 export function changeSize() {
   circles
     .transition()
-    .duration(DURATION)
+    .duration(NORMAL_SPEED)
     .attr("cx", (_, i) => x()(i))
     .attr("cy", (d) => height - radiusScale(d))
     .attr("r", (d) => radiusScale(d))
@@ -120,7 +121,7 @@ export function revertChangeSize() {
   circles.each(function (d, i) {
     d3.select(this)
       .transition()
-      .duration(DURATION)
+      .duration(NORMAL_SPEED)
       .attr("opacity", 0.5)
       .attr("cx", x()(i))
       .attr("cy", (d) => height - radiusScale(d))
@@ -135,7 +136,7 @@ export function hideDataPoints() {
     if (i !== 0 && i !== 6) {
       d3.select(this)
         .transition()
-        .duration(DURATION)
+        .duration(FAST_SPEED)
         .attr("opacity", 0)
         .attr("r", 0);
     }
@@ -153,7 +154,7 @@ export function moveBlueCircle() {
   circles
     .filter((_, i) => i === 0)
     .transition()
-    .duration(DURATION)
+    .duration(FAST_SPEED)
     .delay((_, i) => i * 750)
     .attr("cx", () => x()(0))
     .attr("cy", (d) => height - radiusScale(d) * 1.5)
@@ -164,7 +165,7 @@ export function moveBlueCircle() {
   circles
     .filter((_, i) => i === 6)
     .transition()
-    .duration(DURATION)
+    .duration(FAST_SPEED)
     .delay((_, i) => i * 750)
     .attr("cx", () => x()(1))
     .attr("cy", (d) => height - radiusScale(d) * 1.5)
@@ -224,7 +225,7 @@ export function growCircles() {
   circles
     .filter((_, i) => i === 0 || i === 6)
     .transition()
-    .duration(DURATION)
+    .duration(NORMAL_SPEED)
     .attr("cy", (d) => height - (radiusScale(d) - initialRadius) * 3)
     .attr("r", (d) => radiusScale(d) * 3);
 
@@ -232,23 +233,31 @@ export function growCircles() {
   svg
     .selectAll(".data-line")
     .transition()
-    .duration(DURATION)
+    .duration(NORMAL_SPEED)
     .attr("y1", height)
     .attr("y2", height + lineLength * 2);
 
   svg
     .selectAll(".data-text")
     .transition()
-    .duration(DURATION)
+    .duration(NORMAL_SPEED)
     .attr("y", height + lineLength * 2 + 15);
 }
 
 export function hideLines() {
-  svg.selectAll(".data-line").transition().duration(500).attr("opacity", 0);
+  svg
+    .selectAll(".data-line")
+    .transition()
+    .duration(FAST_SPEED)
+    .attr("opacity", 0);
 }
 
 export function hideText() {
-  svg.selectAll(".data-text").transition().duration(500).attr("opacity", 0);
+  svg
+    .selectAll(".data-text")
+    .transition()
+    .duration(FAST_SPEED)
+    .attr("opacity", 0);
 }
 
 export function hideLinesAndText() {
