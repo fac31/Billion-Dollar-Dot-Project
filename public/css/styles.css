@@ -225,7 +225,6 @@ article {
   margin: auto;
 }
 .tooltip {
-  position: relative;
   z-index: 2;
 }
 
