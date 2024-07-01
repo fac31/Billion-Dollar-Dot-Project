@@ -2,14 +2,18 @@
 // We are importing scrollama through a cdn in index.html
 import { runIntroAnimation } from "../js/intro.js";
 import { handleStepProgress, handleStepExit } from "./stepHandler.js";
-import { startDataViz2, stopDataViz2 } from "./dataViz2.js";
+
+import { startDataViz2 } from "./dataViz2.js";
+
 import { startDataViz3 } from "./dataViz3.js";
 
 function main() {
   const dataviz_one = document.getElementById("dataviz_one");
   dataviz_one.firstChild.setAttribute("height", "300px");
 
-  runIntroAnimation();
+  /* UNCOMMENT OUT FOR JS ANIMATION */
+  // runIntroAnimation();
+
 
   const scroller = scrollama();
 

@@ -30,6 +30,44 @@ html {
   --screen-large-container: 60%;
   --screen-small-step-height: 70vh;
   --screen-large-step-height: 90vh;
+  --circle-multiplier: 6;
+  --circle-speed: 2500ms;
+  --circle-delay: 250ms;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    margin-top: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    margin-top: 60vh;
+  }
+}
+
+#hero-text {
+  position: relative;
+  z-index: 100;
+}
+
+.circles > * {
+  position: absolute;
+  z-index: 0;
+  right: 16.5vw;
+  width: 9.1vw;
+  height: 9vw;
+  border-radius: 50%;
+  animation-duration: var(--circle-speed);
+  /* COMMENT OUT BELOW FOR JS ANIMATION */
+  animation-name: fadeInDown;
+  animation-direction: normal;
+  opacity: 0;
+  animation-fill-mode: forwards;
+
 }
 
 #start {
@@ -142,46 +180,51 @@ p {
 /* CIRCLE ELEMENTS */
 #circles-intro {
   position: relative;
-  top: -22.5vw;
+  z-index: 0;
+  /* COMMENT OUT FOR JS ANIMATION */
+  top: -21vw;
+  /* UNCOMMENT FOR JS ANIMATION */
+  /* top: -14vw; */
   left: 6.5vw;
-}
-
-.circles > * {
-  position: absolute;
-  right: 16.5vw;
-  top: -200px;
-  width: 9.1vw;
-  height: 9vw;
-  border-radius: 50%;
-  opacity: 0;
 }
 
 #blue-c {
   background-color: var(--blue);
+  animation-delay: calc(var(--circle-delay) * 1);
 }
-#green-c {
+#orange-c {
   background-color: var(--green);
+  animation-delay: calc(var(--circle-delay) * 2);
 }
-#yellow-c {
+
+#dark-blue-c {
   background-color: var(--yellow);
+  animation-delay: calc(var(--circle-delay) * 3);
 }
-#pink-c {
+#light-green-c {
   background-color: var(--pink);
+  animation-delay: calc(var(--circle-delay) * 4);
 }
 #grey-c {
   background-color: var(--grey);
+  animation-delay: calc(var(--circle-delay) * 5);
 }
-#light-green-c {
+#pink-c {
   background-color: var(--light-green);
+  animation-delay: calc(var(--circle-delay) * 6);
 }
-#dark-blue-c {
+#yellow-c {
   background-color: var(--dark-blue);
+  animation-delay: calc(var(--circle-delay) * 7);
 }
-#orange-c {
+
+#green-c {
   background-color: var(--orange);
+  animation-delay: calc(var(--circle-delay) * 8);
 }
-#purple-c {
+#blue-c {
   background-color: var(--purple);
+  animation-delay: calc(var(--circle-delay) * 9);
 }
 
 .step {
@@ -254,15 +297,10 @@ article {
   .step {
     height: var(--screen-small-step-height);
   }
-
+  
   .step,
   article {
     width: var(--screen-small-container);
-  }
-
-  #circles-intro > * {
-    margin-left: 110px;
-    top: 60%;
   }
 
   #dataviz-two-sizing {
