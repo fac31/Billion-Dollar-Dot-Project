@@ -2,7 +2,9 @@
 // We are importing scrollama through a cdn in index.html
 import { runIntroAnimation } from "../js/intro.js";
 import { handleStepProgress, handleStepExit } from "./stepHandler.js";
+
 import { startDataViz2 } from "./dataViz2.js";
+
 import { startDataViz3 } from "./dataViz3.js";
 
 function main() {
@@ -11,6 +13,7 @@ function main() {
 
   /* UNCOMMENT OUT FOR JS ANIMATION */
   // runIntroAnimation();
+
 
   const scroller = scrollama();
 

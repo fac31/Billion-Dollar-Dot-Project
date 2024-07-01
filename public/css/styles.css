@@ -67,6 +67,7 @@ html {
   animation-direction: normal;
   opacity: 0;
   animation-fill-mode: forwards;
+
 }
 
 #start {
@@ -187,7 +188,7 @@ p {
   left: 6.5vw;
 }
 
-#purple-c {
+#blue-c {
   background-color: var(--blue);
   animation-delay: calc(var(--circle-delay) * 1);
 }
@@ -296,7 +297,7 @@ article {
   .step {
     height: var(--screen-small-step-height);
   }
-
+  
   .step,
   article {
     width: var(--screen-small-container);
