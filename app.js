@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 3050;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,3 +33,4 @@ app.use((req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });
+// Select the container div and append the SVG

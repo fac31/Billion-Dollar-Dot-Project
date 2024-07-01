@@ -290,4 +290,46 @@ article {
     margin: 5px;
     padding: 5px;
   }
+
+  #test-animation {
+    width: 758px;
+    height: 758px;
+    border: 1px solid #ccc;
+  }
+}
+
+#circle-0 {
+  fill: #0e8bcd;
+}
+
+#circle-1 {
+  fill: #5b8f77;
+}
+
+#circle-2 {
+  fill: #e1b52f;
+}
+
+#circle-3 {
+  fill: #919191;
+}
+
+#circle-4 {
+  fill: #003d2b;
+}
+
+#circle-5 {
+  fill: #cb026e;
+}
+
+#circle-6 {
+  fill: #d86c01;
+}
+
+#circle-7 {
+  fill: #8b3076;
+}
+
+#circle-8 {
+  fill: #01608a;
 }
