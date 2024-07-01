@@ -61,7 +61,7 @@ d3.csv(
 
   // Show tooltip on hover
   circles2.on("mouseenter", function (event, d) {
-    console.log("mouseover");
+    // console.log("mouseover");
     tooltip.transition().duration(200).style("opacity", 0.9);
     tooltip
       .html(`This Billion Dollars belongs to ${d.name}`)

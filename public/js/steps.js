@@ -1,54 +1,79 @@
-import { fadeOut, fadeInSVG } from "./fade.js";
+import { fadeInSVG, fadeOutSVG } from "./fade.js";
 import {
   changeSize,
+  hideCircles,
   hideDataPoints,
+  hideLinesAndText,
   moveBlueCircle,
-  restartDataViz,
+  restartDataViz1,
   revertChangeSize,
-  startDataViz,
+  showLinesAndText,
+  startDataViz1,
 } from "./dataViz.js";
 const introCircles = document.getElementById("circles-intro");
 const dataViz1 = document.getElementById("dataviz_one");
-const step1Viz = document.getElementById("step1Viz");
-const step2 = document.getElementById("step2");
-const step3 = document.getElementById("step3");
-const step4 = document.getElementById("step4");
+
+export function enterStepZero() {
+  console.log("enterStepZero");
+  hideCircles();
+  fadeOutSVG(dataViz1.firstChild, 10, 1);
+}
+
+export function exitStepZeroDown() {
+  console.log("exitStepZeroDown");
+  introCircles.style.opacity = 0;
+  hideCircles();
+  fadeInSVG(dataViz1.firstChild, 10, 1);
+}
 
 export function enterStepOne() {
-  for (const circle of introCircles.children) {
-    fadeOut(circle, 20);
-  }
-  transitionToStep(step1Viz);
-  dataViz1.firstChild.setAttribute("height", "300px");
-  startDataViz();
+  console.log("enterStepOne");
+  fadeInSVG(dataViz1.firstChild, 10, 1);
+  hideLinesAndText();
+  startDataViz1();
 }
+
 export function revertToStepOne() {
-  transitionToStep(step1Viz);
-  restartDataViz();
+  console.log("revertToStepOne");
+  fadeInSVG(dataViz1.firstChild, 10, 1);
+  hideLinesAndText();
+  revertChangeSize();
+  restartDataViz1();
+}
+
+export function exitStepOneDown() {
+  // placeholder
 }
 
 export function enterStepTwo() {
-  dataViz1.setAttribute("height", "600px");
-  transitionToStep(step2);
+  console.log("enterStepTwo");
+  fadeInSVG(dataViz1.firstChild, 10, 1);
   changeSize();
 }
+
 export function revertToStepTwo() {
-  transitionToStep(step2);
+  console.log("revertToStepTwo");
+  fadeInSVG(dataViz1.firstChild, 10, 1);
+  hideLinesAndText();
   revertChangeSize();
+  showLinesAndText();
 }
 
 export function enterStepThree() {
-  transitionToStep(step3);
+  console.log("enterStepThree");
+  fadeInSVG(dataViz1.firstChild, 10, 1);
   hideDataPoints();
   moveBlueCircle();
 }
-export function enterStepFour() {
-  transitionToStep(step4);
+
+export function revertToStepThree() {
+  console.log("revertToStepThree");
+  fadeInSVG(dataViz1.firstChild, 10, 1);
+  hideDataPoints();
+  moveBlueCircle();
 }
 
-function transitionToStep(step) {
-  dataViz1.firstChild.setAttribute("opacity", "0");
-  step.append(dataViz1);
-
-  fadeInSVG(dataViz1.firstChild, 10, 1);
+export function exitStepThreeDown() {
+  console.log("exitStepThreeDown");
+  fadeOutSVG(dataViz1.firstChild, 0, 1);
 }

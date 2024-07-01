@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import scrollama from "scrollama";
 
 // Define data visualization functions
 function dataViz1() {
